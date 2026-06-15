@@ -18,7 +18,7 @@ export class CreateClientDto {
   lastName: string;
 
   @IsEmail()
-  @IsNotEmpty()
+  @IsNotEmpty() 
   email: string;
 
   @IsString()

@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { eq } from 'drizzle-orm';
+import { desc, eq } from 'drizzle-orm';
 import { db } from 'src';
 import { clientTable } from 'src/db/schema';
 import { CreateClientDto } from './create-client.dto';
@@ -7,7 +7,7 @@ import { CreateClientDto } from './create-client.dto';
 @Injectable()
 export class ClientsService {
     async getAllClient() {
-        const allClients = await db.select().from(clientTable)
+        const allClients = await db.select().from(clientTable).orderBy(desc(clientTable.createdAt))
         return allClients
     }
 
